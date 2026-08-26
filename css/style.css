@@ -1,0 +1,224 @@
+/* =========================================================
+   Marketplace.ae — Temporary Landing Page
+   ========================================================= */
+
+/* CSS Variables — adjust these to quickly re-theme or replace imagery */
+:root {
+  --bg-image: url('../assets/images/background.jpg');
+  --overlay-start: rgba(0, 0, 0, 0.1);
+  --overlay-end: rgba(0, 0, 0, 0.5);
+  --text-primary: rgba(255, 255, 255, 0.96);
+  --text-secondary: rgba(255, 255, 255, 0.72);
+  --accent: #d4af37;
+  --accent-hover: #e8c96b;
+  --font-heading: 'Georgia', 'Times New Roman', serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background-color: #0a0a0a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Hero container */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  padding: clamp(1.5rem, 5vw, 4rem);
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Full-bleed background image */
+.hero__background {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: var(--bg-image);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform: scale(1.02);
+}
+
+/* Dark gradient overlay for readability */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    var(--overlay-start) 16%,
+    var(--overlay-end) 67%
+  );
+}
+
+/* Content wrapper — fades in on page load */
+.hero__header,
+.hero__message,
+.hero__enquiry,
+.hero__footer {
+  opacity: 0;
+  animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero__header {
+  position: absolute;
+  top: clamp(1.5rem, 5vh, 3rem);
+  animation-delay: 0.1s;
+}
+
+.hero__message {
+  max-width: 54rem;
+  animation-delay: 0.35s;
+}
+
+.hero__enquiry {
+  margin-top: 2.5rem;
+  animation-delay: 0.6s;
+}
+
+.hero__footer {
+  position: absolute;
+  bottom: clamp(1rem, 3vh, 2rem);
+  animation-delay: 0.8s;
+}
+
+/* Logo */
+.hero__logo {
+  display: block;
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.35));
+}
+
+/* Main message */
+.hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.875rem, 5vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+}
+
+.hero__subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(1.0625rem, 2.4vw, 1.375rem);
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  max-width: 44rem;
+  margin: 0 auto;
+}
+
+/* Enquiry CTA */
+.hero__enquiry p {
+  font-size: clamp(0.9375rem, 2vw, 1.0625rem);
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.hero__link {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.hero__link:hover,
+.hero__link:focus {
+  color: var(--accent-hover);
+  border-color: currentColor;
+  outline: none;
+}
+
+/* Footer copyright */
+.hero__copyright {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.02em;
+}
+
+/* Entrance animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .hero__header,
+  .hero__message,
+  .hero__enquiry,
+  .hero__footer {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 640px) {
+  .hero {
+    padding: 1.5rem;
+  }
+
+  .hero__header {
+    top: 1.5rem;
+  }
+
+  .hero__logo {
+    max-width: 200px;
+  }
+
+  .hero__message {
+    max-width: 100%;
+  }
+
+  .hero__enquiry {
+    margin-top: 2rem;
+  }
+
+  .hero__footer {
+    bottom: 1rem;
+  }
+}
+
+/* Large desktop refinements */
+@media (min-width: 1920px) {
+  .hero__title {
+    font-size: 3.75rem;
+  }
+
+  .hero__subtitle {
+    font-size: 1.5rem;
+  }
+}
