@@ -54,7 +54,7 @@ body {
   inset: 0;
   z-index: -2;
   background-image: var(--bg-image);
-  background-position: right center;
+  background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
   transform: scale(1.02);
